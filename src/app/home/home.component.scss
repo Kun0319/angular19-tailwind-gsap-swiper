@@ -1,0 +1,198 @@
+/* 全頁滾動樣式 */
+.fullpage-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: transparent;
+}
+
+/* Swiper 橫向滾動容器樣式 */
+.swiper {
+  width: 100vw;
+  height: 100vh;
+  background: transparent;
+}
+
+.swiper-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row; /* 橫向排列滑塊 */
+}
+
+.swiper-slide {
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0; /* 防止收縮 */
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+}
+
+/* 確保各個區塊背景正確顯示 */
+.swiper-slide.section-hero {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.swiper-slide.section-features {
+  background-color: #1e293b; /* slate-800 */
+}
+
+.swiper-slide.section-stats {
+  background-color: #0f172a; /* slate-900 */
+}
+
+.swiper-slide.section-news {
+  background-color: #1e293b; /* slate-800 */
+}
+
+.swiper-slide.section-contact {
+  background-color: #0f172a; /* slate-900 */
+}
+
+/* Swiper 橫向分頁器樣式 */
+.swiper-pagination {
+  position: fixed;
+  bottom: 30px; /* 底部位置 */
+  left: 50%;
+  transform: translateX(-50%); /* 水平居中 */
+  top: auto !important;
+  right: auto !important;
+  width: auto !important;
+  display: flex;
+  flex-direction: row; /* 橫向排列圓點 */
+  gap: 15px;
+  z-index: 40;
+}
+
+.swiper-pagination .nav-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  display: block;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  margin: 0 !important;
+  
+  &.active {
+    background-color: #3b82f6;
+    transform: scale(1.3);
+  }
+  
+  &:hover {
+    background-color: #60a5fa;
+  }
+}
+
+/* 傳統導航點樣式 (保留以防需要) */
+.navigation-dots {
+  .nav-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.3);
+    display: block;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    
+    &.active {
+      background-color: #3b82f6;
+      transform: scale(1.3);
+    }
+    
+    &:hover {
+      background-color: #60a5fa;
+    }
+  }
+}
+
+/* 計數器動畫 */
+.counter {
+  display: inline-block;
+}
+
+/* 卡片與特色卡片動畫 */
+.feature-card, .bg-slate-800 {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* 動畫元素 - 初始狀態設為可見，讓 GSAP 控制 */
+.anim-element {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 文字溢出截斷 (用於標題) */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 導航欄玻璃效果 */
+nav {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Swiper 禁用狀態樣式 (塗鴉模式) */
+.swiper.swiper-disabled {
+  pointer-events: none;
+}
+
+/* 響應式調整 - 橫向版本 */
+@media (max-width: 768px) {
+  .swiper-pagination {
+    bottom: 20px;
+    gap: 12px;
+  }
+  
+  .swiper-pagination .nav-dot {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+/* Swiper 橫向滾動時的過渡效果 */
+.swiper-horizontal > .swiper-wrapper {
+  flex-direction: row;
+}
+
+/* 確保內容在 Swiper 中正確顯示 */
+.swiper-slide .container {
+  width: 100%;
+  height: 100%;
+}
+
+/* 確保區塊內容填滿整個滑塊 */
+.section-hero,
+.section-features,
+.section-stats,
+.section-news,
+.section-contact {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 修復可能的 z-index 問題 */
+.swiper-slide {
+  z-index: 1;
+}
+
+.swiper-slide-active {
+  z-index: 2;
+}

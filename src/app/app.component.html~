@@ -1,0 +1,7 @@
+<div class="min-h-screen bg-slate-900 relative">
+  <!-- 主要內容 - 路由出口 -->
+  <router-outlet></router-outlet>
+</div>
+
+<!-- 獨立容器放置塗鴉牆組件 -->
+<app-graffiti></app-graffiti>
